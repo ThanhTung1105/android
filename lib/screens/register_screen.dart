@@ -1,9 +1,9 @@
 // lib/features/auth/presentation/screens/register_screen.dart
 import 'package:flutter/material.dart';
-import 'package:safetrek_app/core/app_routes.dart';
-import 'package:provider/provider.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_state.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_view_model.dart'; // THÊM DÒNG NÀY
+import 'package:safetrek_app/utils/app_routes.dart';
+import 'package:provider/provider.dart';
+import 'package:safetrek_app/screens/auth_state.dart';
+import 'package:safetrek_app/screens/auth_view_model.dart';
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 

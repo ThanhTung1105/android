@@ -1,9 +1,9 @@
 // lib/features/home/presentation/screens/profile_tab_screen.dart
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_view_model.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/domain/entities/user.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/domain/entities/user.dart'; // THÊM DÒNG NÀY
+import 'package:provider/provider.dart';
+import 'package:safetrek_app/screens/auth_view_model.dart';
+import 'package:safetrek_app/models/user.dart';
+
 class ProfileTabScreen extends StatefulWidget {
   const ProfileTabScreen({super.key});
 

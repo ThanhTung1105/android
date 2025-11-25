@@ -1,9 +1,9 @@
 // lib/features/home/presentation/screens/home_tab_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:safetrek_app/features/auth/presentation/auth_view_model.dart';
-import 'package:safetrek_app/features/auth/domain/entities/user.dart';
-import 'package:safetrek_app/features/home/presentation/screens/trip_setup_screen.dart'; // Import màn hình setup
+import 'package:safetrek_app/screens/auth_view_model.dart';
+import 'package:safetrek_app/models/user.dart';
+import 'package:safetrek_app/screens/trip_setup_screen.dart';
 
 class HomeTabScreen extends StatefulWidget {
   const HomeTabScreen({super.key});

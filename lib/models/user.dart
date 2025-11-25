@@ -1,8 +1,22 @@
-// lib/features/auth/data/models/user_model.dart
-import 'package:safetrek_app/features/auth/domain/entities/user.dart';
+import 'package:equatable/equatable.dart';
 
-// UserModel là một bản mở rộng của User Entity, chứa các phương thức
-// để chuyển đổi từ/đến JSON (từ API).
+// Đây là Entity (model) của người dùng, độc lập với tầng dữ liệu hoặc UI
+class User extends Equatable {
+  final String id;
+  final String email;
+  final String? fullName; // Có thể null
+  final String? profilePictureUrl; // Có thể null
+
+  const User({
+    required this.id,
+    required this.email,
+    this.fullName,
+    this.profilePictureUrl,
+  });
+
+  @override
+  List<Object?> get props => [id, email, fullName, profilePictureUrl];
+}
 class UserModel extends User {
   const UserModel({
     required super.id,

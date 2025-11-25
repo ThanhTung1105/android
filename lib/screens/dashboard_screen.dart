@@ -1,13 +1,13 @@
 // lib/features/home/presentation/screens/dashboard_screen.dart
 import 'package:flutter/material.dart';
-import 'package:safetrek_app/core/app_routes.dart';
-import 'package:safetrek_app/features/home/presentation/screens/profile_tab_screen.dart';
-import 'package:safetrek_app/features/home/presentation/screens/home_tab_screen.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/home/presentation/screens/safety_monitoring_tab_screen.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/home/presentation/screens/alerts_tab_screen.dart'; // THÊM DÒNG NÀY
-import 'package:provider/provider.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_view_model.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_state.dart'; // THÊM DÒNG NÀY
+import 'package:safetrek_app/utils/app_routes.dart';
+import 'package:safetrek_app/screens/profile_tab_screen.dart';
+import 'package:safetrek_app/screens/home_tab_screen.dart';
+import 'package:safetrek_app/screens/safety_monitoring_tab_screen.dart';
+import 'package:safetrek_app/screens/alerts_tab_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:safetrek_app/screens/auth_view_model.dart';
+import 'package:safetrek_app/screens/auth_state.dart';
 // Đây sẽ là màn hình chứa BottomNavigationBar và quản lý các tab
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

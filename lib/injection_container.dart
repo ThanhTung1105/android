@@ -1,62 +1,36 @@
-// lib/injection_container.dart
 import 'package:get_it/get_it.dart';
-import 'package:get_it/get_it.dart';
-import 'package:safetrek_app/features/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:safetrek_app/features/auth/data/datasources/auth_remote_datasource_impl.dart';
-import 'package:safetrek_app/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:safetrek_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:safetrek_app/features/auth/domain/usecases/forgot_password.dart';
-import 'package:safetrek_app/features/auth/domain/usecases/get_current_user.dart';
-import 'package:safetrek_app/features/auth/domain/usecases/login_user.dart';
-import 'package:safetrek_app/features/auth/domain/usecases/logout_user.dart';
-import 'package:safetrek_app/features/auth/domain/usecases/register_user.dart';
-import 'package:safetrek_app/features/auth/domain/usecases/reset_password.dart';
-
-// ... các import cũ ...
-import 'package:safetrek_app/features/auth/presentation/auth_state.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_view_model.dart'; // THÊM DÒNG NÀY
-import 'package:dio/dio.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/core/api_constants.dart'; // THÊM DÒNG NÀY
-
-final sl = GetIt.instance; // 'sl' viết tắt của Service Locator
-
+// Import các file từ cấu trúc mới
+import 'package:safetrek_app/utils/api_constants.dart'; // Đảm bảo bạn đã chuyển file này vào utils
+import 'package:safetrek_app/services/auth_service.dart';
+import 'package:safetrek_app/screens/auth_view_model.dart';
+final sl = GetIt.instance;
 
 Future<void> init() async {
-  sl.registerLazySingleton<AuthRepository>(
-        () => AuthRepositoryImpl(remoteDataSource: sl()),
-  );
+  //! Features - Auth
+  // ViewModels
+  // Đăng ký AuthViewModel mới, nó chỉ cần authService
+  sl.registerFactory(() => AuthViewModel(authService: sl()));
 
-  // Datasources
-  sl.registerLazySingleton<AuthRemoteDataSource>(
-        () => AuthRemoteDataSourceImpl(dio: sl()), // THÊM 'dio: sl()' VÀO ĐÂY
-  );
-  // Use cases
-  sl.registerLazySingleton(() => LoginUser(sl()));
-  sl.registerLazySingleton(() => RegisterUser(sl()));
-  sl.registerLazySingleton(() => ForgotPassword(sl()));
-  sl.registerLazySingleton(() => ResetPassword(sl()));
-  sl.registerLazySingleton(() => LogoutUser(sl()));
-  sl.registerLazySingleton(() => GetCurrentUser(sl()));
+  // Services
+  // Đăng ký AuthService mới, nó cần Dio
+  sl.registerLazySingleton<AuthService>(() => AuthService(dio: sl()));
 
-  sl.registerFactory(() => AuthViewModel(
-    loginUser: sl(),
-    registerUser: sl(),
-    forgotPasswordUseCase: sl(),
-    resetPasswordUseCase: sl(),
-    logoutUser: sl(),
-    getCurrentUserUseCase: sl(),
-  ));
 
+  //! Core
+  // Dio client cho gọi API
   sl.registerLazySingleton<Dio>(() => Dio(
     BaseOptions(
-      baseUrl: ApiConstants.baseUrl,
-      connectTimeout: const Duration(seconds: 10), // 10 giây
-      receiveTimeout: const Duration(seconds: 10), // 10 giây
+      baseUrl: ApiConstants.baseUrl, // Đảm bảo ApiConstants đã được chuyển vào utils
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
       headers: {'Content-Type': 'application/json'},
     ),
   ));
 
-
-  // Các service hoặc đối tượng khác sẽ được đăng ký ở đây sau này
+  //! External
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferences);
 }

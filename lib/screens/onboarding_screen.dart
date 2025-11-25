@@ -1,10 +1,8 @@
 // lib/features/auth/presentation/screens/onboarding_screen.dart
 import 'package:flutter/material.dart';
-import 'package:safetrek_app/features/auth/domain/entities/onboarding_page_content.dart';
-import 'package:safetrek_app/features/auth/presentation/screens/login_screen.dart';
-import 'package:safetrek_app/core/app_routes.dart';
+import 'package:safetrek_app/models/onboarding_page_content.dart';
+import 'package:safetrek_app/utils/app_routes.dart';
 
-// import 'package:safetrek_app/features/auth/presentation/screens/login_screen.dart'; // Sẽ tạo tiếp theo
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

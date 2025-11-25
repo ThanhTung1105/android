@@ -1,6 +1,6 @@
 // lib/features/auth/presentation/auth_state.dart
 import 'package:equatable/equatable.dart';
-import 'package:safetrek_app/features/auth/domain/entities/user.dart';
+import '../models/user.dart';
 
 // Base state cho Auth
 abstract class AuthState extends Equatable {

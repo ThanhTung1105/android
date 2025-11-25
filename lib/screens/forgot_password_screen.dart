@@ -1,9 +1,9 @@
 // lib/features/auth/presentation/screens/forgot_password_screen.dart
 import 'package:flutter/material.dart';
-import 'package:safetrek_app/core/app_routes.dart';
-import 'package:provider/provider.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_state.dart'; // THÊM DÒNG NÀY
-import 'package:safetrek_app/features/auth/presentation/auth_view_model.dart'; // THÊM DÒNG NÀY
+import 'package:safetrek_app/utils/app_routes.dart';
+import 'package:provider/provider.dart';
+import 'package:safetrek_app/screens/auth_state.dart';
+import 'package:safetrek_app/screens/auth_view_model.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
